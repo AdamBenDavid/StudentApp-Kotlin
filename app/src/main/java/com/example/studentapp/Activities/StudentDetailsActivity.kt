@@ -39,7 +39,7 @@ class StudentDetailsActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean{
         if (item.itemId == android.R.id.home){
             finish()
             return true
