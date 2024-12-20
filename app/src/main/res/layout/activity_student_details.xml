@@ -15,14 +15,14 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/studentDetailsPicture"
+            android:id="@+id/student_details_activity_picture"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_launcher_foreground"
+            android:src="@drawable/default_student"
             android:layout_gravity="center" />
 
         <TextView
-            android:id="@+id/studentDetailsName"
+            android:id="@+id/student_details_activity_text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Student Name"
@@ -30,7 +30,7 @@
             android:layout_marginTop="16dp" />
 
         <TextView
-            android:id="@+id/studentDetailsId"
+            android:id="@+id/student_details_activity_id_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Student ID"
@@ -38,7 +38,7 @@
             android:layout_marginTop="8dp" />
 
         <TextView
-            android:id="@+id/studentDetailsStatus"
+            android:id="@+id/student_details_activity_status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Checked Status: false"
@@ -46,7 +46,7 @@
             android:layout_marginTop="8dp" />
 
         <Button
-            android:id="@+id/editStudentButton"
+            android:id="@+id/student_details_activity_button_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Student"

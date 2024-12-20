@@ -14,22 +14,18 @@ class EditStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_student)
 
-        // Set up header
-        supportActionBar?.title = "Edit Student"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         val studentId = intent.getStringExtra("STUDENT_ID")
         val student = StudentRepository.students.find { it.id == studentId }
 
-        val nameField: EditText = findViewById(R.id.editStudentName)
-        val idField: EditText = findViewById(R.id.editStudentId)
+        val nameField: EditText = findViewById(R.id.edit_student_activity_name_edit_text)
+        val idField: EditText = findViewById(R.id.edit_student_activity_id_edit_text)
 
         student?.let {
             nameField.setText(it.name)
             idField.setText(it.id)
         }
 
-        val saveButton: Button = findViewById(R.id.saveEditedStudentButton)
+        val saveButton: Button = findViewById(R.id.edit_student_activity_button_save)
         saveButton.setOnClickListener {
             val updatedName = nameField.text.toString()
             val updatedId = idField.text.toString()
@@ -40,17 +36,24 @@ class EditStudentActivity : AppCompatActivity() {
                 val intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
-                finish() // Close this activity
+                finish()
             }
         }
 
-        val deleteButton: Button = findViewById(R.id.deleteStudentButton)
+        val deleteButton: Button = findViewById(R.id.edit_student_activity_button_delet)
         deleteButton.setOnClickListener {
             StudentRepository.students.remove(student)
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
-            finish() // Close this activity
+            finish()
+        }
+
+        val cancelButton: Button = findViewById(R.id.edit_student_activity_button_cancel)
+        cancelButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

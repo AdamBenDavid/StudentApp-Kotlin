@@ -14,26 +14,29 @@ class NewStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_student)
 
-        // Set up header
-        supportActionBar?.title = "New Student"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val nameField: EditText = findViewById(R.id.studentName)
-        val idField: EditText = findViewById(R.id.studentId)
-        val saveButton: Button = findViewById(R.id.saveButton)
+        val nameField: EditText = findViewById(R.id.new_student_activity_name_text)
+        val idField: EditText = findViewById(R.id.new_student_activity_id_text)
+        val saveButton: Button = findViewById(R.id.new_student_activity_button_save)
 
         saveButton.setOnClickListener {
             val name = nameField.text.toString()
             val id = idField.text.toString()
 
             if (name.isNotEmpty() && id.isNotEmpty()) {
-                val newStudent = Student(id, name, false, R.drawable.ic_launcher_foreground)
+                val newStudent = Student(id, name, false, R.drawable.default_student)
                 StudentRepository.students.add(newStudent)
                 val intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
-                finish() // Close this activity
+                finish()
             }
+        }
+
+        val cancelButton: Button = findViewById(R.id.new_student_activity_button_cancel)
+        cancelButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
