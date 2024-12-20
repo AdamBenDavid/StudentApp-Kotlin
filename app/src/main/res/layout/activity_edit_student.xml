@@ -15,31 +15,38 @@
         android:padding="16dp">
 
         <EditText
-            android:id="@+id/editStudentName"
+            android:id="@+id/edit_student_activity_name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Edit Student Name"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editStudentId"
+            android:id="@+id/edit_student_activity_id_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Edit Student ID"
             android:inputType="text" />
 
         <Button
-            android:id="@+id/saveEditedStudentButton"
+            android:id="@+id/edit_student_activity_button_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Changes"
             android:layout_marginTop="16dp" />
 
         <Button
-            android:id="@+id/deleteStudentButton"
+            android:id="@+id/edit_student_activity_button_delet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete Student"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/edit_student_activity_button_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
             android:layout_marginTop="8dp" />
     </LinearLayout>
 

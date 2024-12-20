@@ -18,20 +18,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Set up header
-        supportActionBar?.title = "Student List"
-
         studentAdapter = StudentAdapter(StudentRepository.students) { selectedStudent ->
             val intent = Intent(this, StudentDetailsActivity::class.java)
             intent.putExtra("STUDENT_ID", selectedStudent.id)
             startActivity(intent)
         }
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val recyclerView: RecyclerView = findViewById(R.id.main_activity_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = studentAdapter
 
-        val addButton: Button = findViewById(R.id.addButton)
+        val addButton: Button = findViewById(R.id.main_activity_Button_Add)
         addButton.setOnClickListener {
             val intent = Intent(this, NewStudentActivity::class.java)
             startActivity(intent)
@@ -42,14 +39,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        studentAdapter.notifyDataSetChanged() // Refresh data when returning to the activity
+        studentAdapter.notifyDataSetChanged()
     }
 
     private fun loadStudents() {
         if (StudentRepository.students.isEmpty()) {
             StudentRepository.students.addAll(listOf(
-                Student("1", "John Doe", false, R.drawable.ic_launcher_foreground),
-                Student("2", "Jane Smith", false, R.drawable.ic_launcher_foreground)
+                Student("212292197", "Aviv Menahem", false, R.drawable.default_student),
+                Student("208298257", "Adam Ben David", false, R.drawable.default_student)
             ))
         }
         studentAdapter.notifyDataSetChanged()

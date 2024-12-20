@@ -15,17 +15,14 @@ class StudentDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_details)
 
-        // Set up header
-        supportActionBar?.title = "Student Details"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val studentId = intent.getStringExtra("STUDENT_ID")
         val student = StudentRepository.students.find { it.id == studentId }
 
-        val nameText: TextView = findViewById(R.id.studentDetailsName)
-        val idText: TextView = findViewById(R.id.studentDetailsId)
-        val picture: ImageView = findViewById(R.id.studentDetailsPicture)
-        val statusText: TextView = findViewById(R.id.studentDetailsStatus)
+        val nameText: TextView = findViewById(R.id.student_details_activity_text_name)
+        val idText: TextView = findViewById(R.id.student_details_activity_id_text)
+        val picture: ImageView = findViewById(R.id.student_details_activity_picture)
+        val statusText: TextView = findViewById(R.id.student_details_activity_status_text)
 
         student?.let {
             nameText.text = it.name
@@ -34,7 +31,7 @@ class StudentDetailsActivity : AppCompatActivity() {
             statusText.text = if (it.isChecked) "Checked: true" else "Checked: false"
         }
 
-        val editButton: Button = findViewById(R.id.editStudentButton)
+        val editButton: Button = findViewById(R.id.student_details_activity_button_edit)
         editButton.setOnClickListener {
             val intent = Intent(this, EditStudentActivity::class.java)
             intent.putExtra("STUDENT_ID", studentId)
@@ -42,8 +39,8 @@ class StudentDetailsActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean{
+        if (item.itemId == android.R.id.home){
             finish()
             return true
         }
